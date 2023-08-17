@@ -14,11 +14,12 @@ def plotSystem(ax):
     # Now we define our matrix:
     Z1 = 4 + X + 2*Y 
     Z2 = 0 + 2*X + 3*Y
-    Z3 = 4 + 10*X + 4*Y
+    Z3 = 4 + 2*X + 4*Y
 
     # Plot the surfaces:
     ax.plot_surface(X, Y, Z1, alpha=0.5)
     ax.plot_surface(X, Y, Z2, alpha=0.5)
+    ax.plot_surface(X, Y, Z3, alpha=0.5)
 
 # Setup figure:
 fig =  plt.figure()
