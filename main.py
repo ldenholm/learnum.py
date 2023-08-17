@@ -1,5 +1,6 @@
 import torch as t
 import numpy as np
+import matplotlib
 
 t1 = t.tensor(2.)
 print(t1.dtype)
