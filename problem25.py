@@ -29,3 +29,6 @@ print("Lower triangular of K:\n", L)
 # We have L so let's compute it's inverse:
 E = np.linalg.inv(L)
 print('E:\n', E)
+
+# We see that the E(i, j)th entry is:
+# j/i for j <= i && 0 for j > i.
