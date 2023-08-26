@@ -23,6 +23,7 @@ dls = ImageDataLoaders.from_name_func(
 def main():
     learn = vision_learner(dls, resnet34, metrics=error_rate)
     learn.fine_tune(1)
+    learn.predict()
 
 if __name__ == "__main__":
     main()
