@@ -1,0 +1,40 @@
+Do you need these for deep learning?
+
+Lots of math T / F = F
+Lots of data T / F = F
+Lots of expensive computers T / F = F
+A PhD T / F = F
+
+Name five areas where deep learning is now the best in the world:
+- Colorizing images.
+- Folding proteins.
+- Image recogniztion (categorization, classification).
+- NLP (answering questions, summarizing documents).
+- Playing ATARI video games, and physical games (chess, go).
+
+What was the name of the first device that was based on the principle of the artificial neuron?
+The perceptron was modelled on neurons. Dendrites map to input variables, and the nucleus
+is a function that generates a singular output which maps to the axon.
+
+Based on the book of the same name, what are the requirements for parallel distributed processing (PDP)?
+- A set of processing units (neurons).
+- A state of activation (output On/Off).
+- An output function for every unit (activation function).
+- A pattern of connectivity among units (layers can be bijective).
+- A propagation rule for propagating patterns of activities through the network of connectivities (feed forward?).
+- An activation rule for combining the inputs impinging on a unit with the current state of that unit to produce an output for the unit (ReLu, Threshold, tanh).
+- A learning rule whereby patterns of connectivity are modified by experience (SGD?).
+- An environment within which the system must operate (computer, GPU).
+
+What were the two theoretical misunderstandings that held back the field of neural networks?
+- Networks could not learn certain functions like XOR.
+- Additional layers could help fix this learning bottleneck.
+
+What is a GPU?
+- A GPU is a graphics processing unit that typically performs computations
+related to drawing, rendering, and manipulating objects (graphics). Some operations
+include rotating, coordinate transformations from one coordinate space to another, coloring.
+
+Open a notebook and execute a cell containing: 1+1. What happens?
+- 2 is output beneath the executing cell.
+
