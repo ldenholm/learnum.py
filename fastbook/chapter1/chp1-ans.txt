@@ -38,3 +38,24 @@ include rotating, coordinate transformations from one coordinate space to anothe
 Open a notebook and execute a cell containing: 1+1. What happens?
 - 2 is output beneath the executing cell.
 
+Why is it hard to use a traditional computer program to recognize images in a photo?
+- It is difficult to encode the ways humans use pattern recognition and banks of familiar shapes
+to piece together and recognize an object within milliseconds.
+
+What did Samuel mean by "weight assignment"?
+- Samuel is suggesting assigning some variables (coefficients) which represent a configuration for
+how a model will perform. Then discovering better values (automatically) for those weights that
+increase the performance of the learning model.
+
+What term do we normally use in deep learning for what Samuel called "weights"?
+- Parameters.
+
+Why is it hard to understand why a deep learning model makes a particular prediction?
+- Models can have hundreds of layers which makes it difficult to reach a sensible conclusion
+how a certain prediction was reached.
+
+What is the name of the theorem that shows that a neural network can solve any mathematical problem to any level of accuracy?
+- Universal approximation theorem.
+
+What do you need in order to train a model?
+- Training set, validation set, test set. Network architecture.
