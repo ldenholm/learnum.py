@@ -59,3 +59,55 @@ What is the name of the theorem that shows that a neural network can solve any m
 
 What do you need in order to train a model?
 - Training set, validation set, test set. Network architecture.
+
+How could a feedback loop impact the rollout of a predictive policing model?
+- Suppose the dataset contains arrest information. The police patrol areas having historically considerable levels of arrests. The police are biased by historical arrest data even though that does not represent actual crime. They continue to make arrests judging from biased information. The new arrest data is fed back into the model thereby creating a feedback loop. 
+
+Do we always have to use 224×224-pixel images with the cat recognition model?
+- No this has just been a standard used in research. We are permitted to transform the size to anything else however as size decreases the model struggled to identify features and the inverse is also true. 
+
+What is the difference between classification and regression?
+- Classification is concerned with predicting a "label" for something given a set of discrete options whereas regression is about predicting numerical results that can be from a set of continuous values. For example, a classification model may guess the animal given in an image. A regression model may predict the temperature from a given set of historical weather patterns.
+
+What is a validation set? What is a test set? Why do we need them?
+- A validation set is a subset of the user provided dataset which is automatically reserved for testing the trained model on. It is deliberately hidden from the model during training and used to validate the model’s performance when tested on new data. The test set is a set hidden from both the model and the engineers training the model. Its purpose is to provide a clean chunk of data that has not been optimized for (indirectly) by engineers adjusting hyperparameters in their attempt to increase model performance. Often the validation set is used to adjust hyperparameters to increase performance thereby creating a biased result set, the test set however is free from this bias as it is hidden from the engineers and model. 
+
+What will fastai do if you don't provide a validation set?
+- The Fastai library reserves 20% of the given dataset for the validation set by default. 
+
+Can we always use a random sample for a validation set? Why or why not?
+- It is not recommended to use a random sample for the validation set because in doing so limits one’s ability to measure how effective hyperparameters adjustments are. By keeping a constant validation set for each epoch we eliminate doubting our model’s performance increase is linked to simply recognizing an example sample from the training set is now in the validation set. 
+
+What is overfitting? Provide an example.
+- Overfitting is an observed effect of model training in which a model is trained to memorize elements of the training set rather than identifying their features. For example, suppose we training an NLP model to recognize positive or negative sentences. Instead of learning features about sentences which indicate their sentiment, the model learns to simply assign a given sentence pos/neg result. When given the test set it performs poorly and clearly the model is overfit. 
+
+What is a metric? How does it differ from "loss"?
+- A metric is a human-friendly variable which allows us to measure the performance of a model in a meaningful way. For example, accuracy or error rate are metrics which we can use to judge the performance of a model. On the other hand, loss is the output of a loss function which is used internally by the model for optimization. The model aims to minimize the loss function through stochastic gradient descent hence why it is not necessarily meaningful for us humans to interpret. 
+
+How can pretrained models help?
+- Pretrained models reduce the overheard required for a practitioner to yield useful results with limited resources (compute power, dataset size). By leveraging a pretrained model we can reappropriate the final layers of the neural network to our specific domain. For example, suppose we have an image recognition model that has been trained to identify animals. We can use this pretrained model for our purpose of identify beetles. We import the pretrained model and remove the head of the network and replace it with our final layers specific to identifying beetles. It means we can use the earlier layers which recognize lines, curves, planes, spheres etc, and then hone the network to solve for our domain by updating the final layers.
+
+What is the "head" of a model?
+- The head of a model is the final layers and output layer. 
+
+What kinds of features do the early layers of a CNN find? How about the later layers?
+- The early layers of a CNN recognize basic shapes and geometries, for example lines, vertical lines, horizontal lines. The middle layers recognize patterns of features, think the geometry of honeycomb or patterns in flowers. The final layers can recognize collections of these patterns discovered in the earlier layers such as human faces, animals etc.
+
+Are image models only useful for photos?
+- Image models can be used to identify patterns and behaviours in any information that may be cast to an image. Using the Fourier transform we can represent information as an image which can be fed to an image model to solve for a particular value. 
+
+What is an "architecture"?
+- An architecture describes the components, structure, and operations of a neural network. One common architecture is Recurrent Neural Networks (RNN's) for processing time-series and sequence-based data. The name recurrent comes from the behaviour that RNN's can have nodes affect the input to themselves rather than purely feedforward architectures. Another popular architecture is Convolutional Neural Network (CNN) which is typically used with spatial datasets (such as images).
+ 
+
+What is segmentation?
+- Segmentation is the ability of a model to recognize every single pixel in each image rather than an object within the image.
+
+What is y_range used for? When do we need it?
+- y_range is used when the dependent variable can be within a range. For example, suppose we are training a model to predict a user’s review of a certain movie. We may provide a y_range when we are aiming to guess within a range and including an error bound with plus or minus some fixed value.
+ 
+What are "hyperparameters"?
+- Hyperparameters are parameters for parameters. The hyperparameters for a model are parameters adjusted by the practitioner which tweak the training procedure. Some examples of hyperparameters include batch size, optimization algorithm, activation functions etc.
+
+What's the best way to avoid failures when using AI in an organization?
+- Adequate depth of knowledge on the problem domain is crucial to interpret and understand the success or failures in the output of a model. Additionally, if you are someone advising the adoption of ML within your organization and let's say you bring in a third party. It's important to withhold a test set from the consultants to ensure that the model performs well on a dataset they have never encountered before.
