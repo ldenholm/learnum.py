@@ -4,15 +4,19 @@ from fastbook import *
 from fastai.vision.widgets import *
 
 def main():
-    fastbook.setup_book()
+    #fastbook.setup_book()
     key = sys.argv[1]
     bear_types = 'grizzly','black','teddy'
     path = Path('bears')
-    for o in bear_types:
-        dest = (path/o)
-        dest.mkdir(exist_ok=True)
-        results = search_images_bing(key, f'{o} bear')
-        download_images(dest, urls=results.attrgot('contentUrl'))
+    fns = get_image_files(path)
+    failed = verify_images(fns)
+    print(failed)
+    failed.map(Path.unlink)
+    # for o in bear_types:
+    #     dest = (path/o)
+    #     dest.mkdir(exist_ok=True)
+    #     results = search_images_bing(key, f'{o} bear')
+    #     download_images(dest, urls=results.attrgot('contentUrl'))
 
 if __name__ == "__main__":
     main()
