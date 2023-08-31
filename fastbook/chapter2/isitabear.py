@@ -33,6 +33,28 @@ dls = bears.dataloaders(path)
 # Dataloader provides batches of multiple items to the GPU. When looping through
 # Dataloader 64 items (by default) are stacked up into a single tensor and we may
 # inspect these items with the following:
-print(dls)
-dls.valid.show_batch(max_n=4, nrows=1)
+
+#dls.valid.show_batch(max_n=4, nrows=1)
+#plt.show()
+
+# We can use a different transform on each item in the batch. In this example we use
+# RandomResizedCrop to illustrate the benefits of training on random crops of the items.
+
+bears = bears.new(item_tfms=RandomResizedCrop(128, min_scale=0.3))
+# Min scale controls how much of the image to capture. In this case 30%.
+dls = bears.dataloaders(path)
+dls.train.show_batch(max_n=4, nrows=1, unique=True)
+# We set unique = true to view the same image affected by the RandomResizedCrop transform.
 plt.show()
+
+
+# Data Augmentation involves creating variations of the input data to better train a model.
+# In our current example we data augmentation operations include rotation, stretching, warping,
+# flipping, contrast & brightness changes.
+
+# We can apply these transformations to the entire batch using GPU. Here is an example:
+bears = bears.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))
+dls = bears.dataloaders(path)
+dls.train.show_batch(max_n=8, nrows=2, unique=True)
+plt.show()
+# We are not using RandomResizedCrop so its easier to see the results of augmentation.
