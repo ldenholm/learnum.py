@@ -1,14 +1,7 @@
 from fastai.vision.all import *
 import matplotlib.pyplot as plt
 
-path = Path('bears')
-bears = DataBlock(
-    blocks=(ImageBlock, CategoryBlock),
-    get_items=get_image_files,
-    splitter=RandomSplitter(valid_pct=0.2, seed=42),
-    get_y=parent_label,
-    item_tfms=Resize(128)
-    )
+
 # (ImageBlock, CategoryBlock) = tuple describing types for independent and dependent variables.
 # In this case y = f(x), where x = bear imgs, and y = classification (grizzly, black, teddy).
 
@@ -27,7 +20,7 @@ bears = DataBlock(
 # Now we have successfully constructed a datablock, a blueprint for our Dataloaders.
 # Next we must specify the path where our data (images) may be found:
 
-dls = bears.dataloaders(path)
+#dls = bears.dataloaders(path)
 
 # Dataloaders (Fastai) includes a training and a validaiton Dataloader (Pytorch).
 # Dataloader provides batches of multiple items to the GPU. When looping through
@@ -40,12 +33,12 @@ dls = bears.dataloaders(path)
 # We can use a different transform on each item in the batch. In this example we use
 # RandomResizedCrop to illustrate the benefits of training on random crops of the items.
 
-bears = bears.new(item_tfms=RandomResizedCrop(128, min_scale=0.3))
+#bears = bears.new(item_tfms=RandomResizedCrop(128, min_scale=0.3))
 # Min scale controls how much of the image to capture. In this case 30%.
-dls = bears.dataloaders(path)
-dls.train.show_batch(max_n=4, nrows=1, unique=True)
+#dls = bears.dataloaders(path)
+#dls.train.show_batch(max_n=4, nrows=1, unique=True)
 # We set unique = true to view the same image affected by the RandomResizedCrop transform.
-plt.show()
+#plt.show()
 
 
 # Data Augmentation involves creating variations of the input data to better train a model.
@@ -53,8 +46,34 @@ plt.show()
 # flipping, contrast & brightness changes.
 
 # We can apply these transformations to the entire batch using GPU. Here is an example:
-bears = bears.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))
-dls = bears.dataloaders(path)
-dls.train.show_batch(max_n=8, nrows=2, unique=True)
-plt.show()
+# bears = bears.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))
+# dls = bears.dataloaders(path)
+# dls.train.show_batch(max_n=8, nrows=2, unique=True)
+# plt.show()
 # We are not using RandomResizedCrop so its easier to see the results of augmentation.
+
+# Training the model
+
+# My dataset has few items so training with RandomResizedCrop will help avoid overfitting.
+# A default image size of 224 is chosen. We also use default aug transforms.
+def main():
+    #set_start_method('fork', force=True)
+    path = Path('bears')
+    bears = DataBlock(
+        blocks=(ImageBlock, CategoryBlock),
+        get_items=get_image_files,
+        splitter=RandomSplitter(valid_pct=0.2, seed=42),
+        get_y=parent_label,
+        item_tfms=Resize(128)
+    )
+    bears = bears.new(
+        item_tfms=RandomResizedCrop(224, min_scale=0.5),
+        batch_tfms=aug_transforms()
+        )
+    dls = bears.dataloaders(path, num_workers=0)
+    # Create Learner and fine-tune:
+    learn = vision_learner(dls, resnet18, metrics=error_rate)
+    learn.fine_tune(4)
+
+if __name__ == "__main__":
+    main()
