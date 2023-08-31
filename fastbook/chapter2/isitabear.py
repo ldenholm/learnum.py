@@ -71,6 +71,9 @@ def main():
         batch_tfms=aug_transforms()
         )
     dls = bears.dataloaders(path, num_workers=0)
+    # lets take a look before training.
+    dls.train.show_batch(max_n=8, nrows=2, unique=True)
+    plt.show()
     # Create Learner and fine-tune:
     learn = vision_learner(dls, resnet18, metrics=error_rate)
     learn.fine_tune(4)
