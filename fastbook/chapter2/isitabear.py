@@ -72,11 +72,30 @@ def main():
         )
     dls = bears.dataloaders(path, num_workers=0)
     # lets take a look before training.
-    dls.train.show_batch(max_n=8, nrows=2, unique=True)
-    plt.show()
+    #dls.train.show_batch(max_n=8, nrows=2, unique=True)
+    #plt.show()
     # Create Learner and fine-tune:
     learn = vision_learner(dls, resnet18, metrics=error_rate)
-    learn.fine_tune(4)
+    learn.fine_tune(3)
 
+
+    # The loss is a number that is high if the model prediction is incorrect (particularly if its
+    # additionally confident of its incorrect answer) or if its correct but not confident of its
+    # answer.
+
+    # We can generate a confusion matrix for our model's predictions. The rows of A correspond
+    # to the images of bears (black, grizzly, teddy) while the columns of A correspond to the
+    # correct predictions made by the model. Therefore we want to see high numbers along the diagonal.
+    # Entries not in A(i,j) aka the diagonal represent incorrect predictions.
+
+    interp = ClassificationInterpretation.from_learner(learn)
+    interp.plot_confusion_matrix()
+    plt.show()
+
+    # We can use plot_top_losses() to show those items in our dataset with the highest loss.
+    # With p(a) representing the probability the prediction is correct, in other words the confidence
+    # level of the model in [0, 1].
+    interp.plot_top_losses(5, nrows=1)
+    plt.show()
 if __name__ == "__main__":
     main()
