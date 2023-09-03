@@ -1,4 +1,5 @@
 from fastai.vision.all import *
+from fastai.vision.widgets import *
 import matplotlib.pyplot as plt
 
 
@@ -97,5 +98,19 @@ def main():
     # level of the model in [0, 1].
     interp.plot_top_losses(5, nrows=1)
     plt.show()
+
+    # We can use a simple model such as this one to identify problems with our data set like incorrect labels.
+    # There is a built in GUI fast.ai provides which allows us to clean data.
+
+    # Note this is bugged for some reason, come back to it.
+
+    # cleaner = ImageClassifierCleaner(learn)
+    # cleaner
+
+    # Finally we want to export our model. This involves exporting both the architecture and the parameters. We can use the
+    # export() method fast.ai provides to save our dataloaders definition, architecture, and parameters in a .pkl file.
+
+    learn.export()
+
 if __name__ == "__main__":
     main()
