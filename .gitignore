@@ -1,5 +1,6 @@
 fastbook/classifiers/cat-or-lion/
 fastbook/chapter2/bears/
 fastbook/chapter2/images/
-fastbook/chapter2/export.pkl
+fastbook/chapter2/app/export.pkl
+fastbook/chapter2/app/uploads
 **/__pycache__/

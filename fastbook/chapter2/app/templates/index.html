@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Bear Training</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1>Black, Grizzly or Teddy!</h1>
     <div class="container">
         <div class="row">
             <div class="col-6 mx-auto mt-5 text-center">
@@ -30,6 +30,10 @@
                     <div class="mt-5">
                         <img src="{{ file_url }}" style="width: 400px;">
                     </div>
+                {% endif %}
+                {% if pred %}
+                <p>Predicted classification = {{ pred }}</p>
+                <p>Probabilities = {{ probs }}</p>
                 {% endif %}
             </div>
         </div>
