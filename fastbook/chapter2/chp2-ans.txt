@@ -1,0 +1,154 @@
+The training data is primarily photographs of bears in the wild. Because the model has been training on this data if a user provides an image of say a drawing or a black and white image of a bear the model's predictions may become less accurate.
+
+ 
+
+Provide an example of where the bear classification model might work poorly in production, due to structural or style differences in the training data.
+
+The training data is primarily photographs of bears in the wild. Because the model has been training on this data if a user provides an image of say a drawing or a black and white image of a bear the model's predictions may become less accurate.
+ 
+
+Where do text models currently have a major deficiency?
+
+Text models currently suffer with generating correct responses. There is no current model that is able to ingest a large corpus of information and produce reliable answers.
+ 
+
+What are possible negative societal implications of text generation models?
+
+Text generation models are able to output convincing text. Therein lies a major security concern which threatens users without domain experience being misled by a text generation model producing compelling information.
+ 
+
+In situations where a model might make mistakes, and those mistakes could be harmful, what is a good alternative to automating a process?
+
+In such situations it is worth integrating a person into the process. A human can check the performance of the model and adjust parameters to avoid any harmful or unwanted outcomes and side effects.
+ 
+
+What kind of tabular data is deep learning particularly good at?
+
+Deep learning is particularly good with tabular data sets containing high cardinality categorical columns (columns with a large set of discrete choices like zip code, phone number), and columns with natural language.
+ 
+
+What's a key downside of directly using a deep learning model for recommendation systems?
+
+Recommendation systems will often promote items which fall within a range of interests near a customer's interest tree. This results in products being recommended which the customer is already aware of. These models are not capable of recommending which products might benefit a user in a more wholistic sense.
+ 
+
+What are the steps of the Drivetrain Approach?
+
+The steps of the drivetrain approach include:
+Consider the objective function. Note it is partly similar to the thinking behind optimization problems in computer science and mathematics.
+Identify which controls one may access to achieve a better or worse outcome of the objective function.
+Identify what data one has for the objective.
+Design a model which can determine the best actions to take to achieve the best outcome in terms of the defined objective function.
+ 
+
+How do the steps of the Drivetrain Approach map to a recommendation system?
+
+Suppose we are an online shopping website and we sell products to customers. We have decided we wish to recommend items to users which they may also wish to purchase judging from their history of purchases.
+We know we can promote products to the users during their sessions on our website and in their mailboxes.
+We have tables of data for users and products purchased, browsing behaviour and a plethora of other data points.
+We create a model which takes the 5 most recent purchases made by a user and for each 5 products construct a list of products neighbouring those products in terms of themes and price range, we then recommend those products on the users homepage and checkout page when they use our webstore.
+ 
+
+Create an image recognition model using data you curate, and deploy it on the web.
+
+See my bears classifier deployed via flask api here {https://github.com/ldenholm/learnum.py/tree/main/fastbook/chapter2/app}.
+ 
+
+What is DataLoaders?
+
+Dataloaders is an interface for loading our dataset into a format to bed use for training. It acceps the data sets we pass as argument to it and exposes them available as train and valid.
+ 
+
+What four things do we need to tell fastai to create DataLoaders?
+
+What data we are working with.
+How to get list of items.
+How to label these files (independent variable).
+How to create the validation set.
+ 
+
+What does the splitter parameter to DataBlock do?
+
+The splitter function allows us to choose how we wish to split the training set and the validation set.
+ 
+
+How do we ensure a random split always gives the same validation set?
+
+We can keep the validation set constant by hardcoding the seed value to an arbitrary integer and never changing it.
+ 
+
+What letters are often used to signify the independent and dependent variables?
+
+Typically y = dependent variable, and x = independent variable.
+ 
+
+What's the difference between the crop, pad, and squish resize approaches? When might you choose one over the others?
+
+Squishing can lead to training a model which learns features from images which do not reflect accurately real representations of objects.
+Padding can increase computational cost of a model because it adds more information to each item. Even though it adds blank space, from the point of view of the model these pixels still need to be processed.
+Cropping can result in key features being removed from the image which means our model will be trained on images lacking their fundamental identifiers for a given classification.
+ 
+
+What is data augmentation? Why is it needed?
+
+Data augmentation involves performing operations on the dataset prior to training. These operations include (but are not limited to): reflections, lighting changes, rotations, perspective transforms, flipping. Data augmentation is necessary to expand the training set to include more copies of the items undergone transformations. By expanding the training set we give the model more samples to train with.
+ 
+
+What is the difference between item_tfms and batch_tfms?
+
+Item_tfms performs transformations on each item whereas batch_tfms performs them on the batches.
+ 
+
+What is a confusion matrix?
+
+The rows of a confusion matrix show the items in the data set while the columns of the confusion matrix show the predictions made by the model. The main diagonal corresponds to the predictions made which were accurate, so starting with A(1,1) entry represents the number of predictions made for the first classification which were correct. Thus we can see the ideal structure of a given confusion matrix is a diagonal matrix. If the matrix is either Upper or Lower triangular we know the model has predicted innacurately.
+ 
+
+What does export save?
+
+Export saves a ".pkl" file which contains our trained model and the architecture it's using, and all of the required information for building our Dataloaders. Without this we would need to redefine how to transform our data to be able to use it in production.
+ 
+
+What is it called when we use a model for getting predictions, instead of training?
+
+This is called "inference".
+ 
+
+What are IPython widgets?
+
+Simple to use GUI components that bring together JS and python functionality and may be used within a Jupyter Notebook.
+ 
+
+When might you want to use CPU for deployment? When might GPU be better?
+
+A CPU is cheaper to rent or purchase compared to a GPU, and also requires less manual memory management when compared with a GPU. For example a GPU requires a precise queueing system so that one batch is processed at a time. On the other hand a GPU will deliver results in a shorter time span when compared with a CPU.
+ 
+
+What are the downsides of deploying your app to a server, instead of to a client (or edge) device such as a phone or PC?
+
+A notable downside of deploying the model to a server is latency. If your model is deployed to users on edge devices then the computation can be performed directly on their device which yields reduced latency for those users. Another key downside of deploying the model on a server is cost. If you can leverage the users own device to execute the model then you reduce the computation burden your server incurs.
+ 
+
+What are three examples of problems that could occur when rolling out a bear warning system in practice?
+
+Dealing with low resolution camera images.
+Ensuring results are returned quickly enough to be useful in real time scenarios.
+Recognizing bears in positions which are rarely captured in photos versus real life.
+ 
+
+What is out-of-domain data?
+
+Out of domain data is data our model may see during production which is drastically different to that which it has seen during training.
+ 
+
+What is "domain shift"?
+
+Is the phenomenon in which the type of data our model sees during production shifts over time. For example a bank deploys a model to recommend financial products to it's cutomers however bank undergoes a major marketing change and attracts different customers now than it did when the model was trained thereby the model is rendered useless against the new new customers whom have different priorities.
+ 
+
+What are the three steps in the deployment process?
+
+The recommended deployment process involves:
+Manual process: run a model in parallel, humans check all predictions.
+Limited scope deployment: Careful human supervision, time or geography limited.
+Gradual expansion: good reporting systems required, consider what could go wrong.
