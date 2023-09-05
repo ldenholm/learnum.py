@@ -32,11 +32,9 @@ def load_cows(filename) -> dict[str, int]:
     with open(path) as f:
         for line in f:
             (key, val) = line.split(",")
-            cows[str(key)] = val
+            cows[str(key)] = int(val)
     
     return cows
-cows = load_cows("ps1_cow_data.txt")
-print('global cows', cows)
 
 # Problem 2
 def greedy_cow_transport(cows,limit=10):
@@ -62,7 +60,30 @@ def greedy_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
-    pass
+    cowsCopy = sorted(cows.items(), key=lambda x:x[1])
+    print('cows dict remains untouched', cows)
+    print('descending list sorted cowsCopy', cowsCopy)
+    currentTrip = []
+    trips = []
+    tripTotalWeight = 0
+    # Note we need to sort the list in such a way that each time we append to the list we choose
+    # a locally optimal solution. This is the definition of greedy.
+    for i in range(len(cowsCopy)):
+        if (tripTotalWeight + cowsCopy[i][1]) <= limit:
+            currentTrip.append(cowsCopy[i][0])
+            tripTotalWeight += cowsCopy[i][1]
+        else:
+            # Trip total weight exceed the limit
+            trips.append(currentTrip)
+            # need to create a new list otherwise it only ever appends the one memory location to trips
+            currentTrip = []
+            # Reset total weight and trip list
+            tripTotalWeight = 0 + cowsCopy[i][1]
+            currentTrip.append(cowsCopy[i][0])
+            # Edge case for final trip:
+            if i == (len((cowsCopy)) -1):
+                trips.append(currentTrip)
+    return trips
 
 # Problem 3
 def brute_force_cow_transport(cows,limit=10):
@@ -104,4 +125,16 @@ def compare_cow_transport_algorithms():
     Does not return anything.
     """
     # TODO: Your code here
+    # Load data
+    cows = load_cows("ps1_cow_data.txt")
+    print('Original cows', cows)
+
+    # Test greedy
+    start = time.time()
+    trips = greedy_cow_transport(cows)
+    ms = (time.time() - start) * 1000
+    print("trips: ", trips, 'num of trips: ', len(trips), '\nTime to run: ', ms)
+
     pass
+
+compare_cow_transport_algorithms()
