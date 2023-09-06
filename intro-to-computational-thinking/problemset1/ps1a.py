@@ -108,7 +108,22 @@ def brute_force_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
-    pass
+    tripPartitions = []
+    for partition in get_partitions(cows.keys()):
+        tripPartitions.append(partition)
+    
+    acceptableTrips = tripPartitions.copy()
+    # rm invalid partitions that exceed the weight bound
+    for tp in tripPartitions:
+        # list of trips so iterate through each trip and calculate the weight
+        for trip in tp:
+            # sum and use current cow in trip as the key to access value in dict
+            total = sum([cows.get(cow) for cow in trip])
+            if total > limit:
+                acceptableTrips.remove(tp)
+                break
+    # return the smallest length partition
+    return (min(acceptableTrips, key=len), acceptableTrips)
         
 # Problem 4
 def compare_cow_transport_algorithms():
@@ -134,6 +149,11 @@ def compare_cow_transport_algorithms():
     trips = greedy_cow_transport(cows)
     ms = (time.time() - start) * 1000
     print("trips: ", trips, 'num of trips: ', len(trips), '\nTime to run: ', ms)
+
+    start = time.time()
+    optimal_trip, acceptableTrips = brute_force_cow_transport(cows)
+    ms = (time.time() - start) * 1000
+    print("optimal trip: ", optimal_trip, '\nTime to run: ', ms, 'total num of acceptable trips, ', len(acceptableTrips))
 
     pass
 

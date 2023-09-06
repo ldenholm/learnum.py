@@ -1,5 +1,6 @@
 # From codereview.stackexchange.com                    
 def partitions(set_):
+    # base case
     if not set_:
         yield []
         return
