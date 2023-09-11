@@ -20,3 +20,15 @@ Second theorem:
 A's compl union B's compl = {1, 2, 4, 5}.
 The equality holds:
 (A intersect B)'s compl == A's compl union B's compl = {1, 2, 4, 5}.
+
+2.4.4 Examples
+(i) The number of ways to choose 2 out of 4 things (order does not matter):
+4Choose2 = 4! / (4-2)!2! = 6.
+
+(ii) The number of ways to list 2 out of 4 things:
+4Perm2 = 4! / (4-2)! = 24.
+Note that for each one of the combinations in (i) there are 2! ways or arranging the
+elements.
+
+(iii): The number of ways to choose 3 out of 10 things:
+10Choose3 = 10! / (10-3)!3! = 120. 
