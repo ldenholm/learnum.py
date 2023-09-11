@@ -32,7 +32,7 @@ def dp_make_weight(egg_weights, target_weight, memo = {}):
     the problem with a binary search tree but examples I have seen use a recursive function instead.
 
     The issue with using a binary tree for this problem is finding the right way to represent decisions. 
-    In the 0/    1 knapsack problem each decision to add or ignore an item was a boolean choice. 
+    In the 0/1 knapsack problem each decision to add or ignore an item was a boolean choice. 
 
     What if we take a step back and consider more generally applying a graph to this problem. What would it look
     like? Well we could begin with a root node. The root node has: egg weights, weight to achieve. Our graph
@@ -55,9 +55,31 @@ def dp_make_weight(egg_weights, target_weight, memo = {}):
 
     We will implement a recursive function which computes combinations of eggs that equal the provided 
     weight then return the set with least length. We will use a dictionary to store memos to avoid unecessary 
-    recomputations. 
+    recomputations.
     """
-    pass
+
+    # Create a default value to return when no solution available:
+    least_steps = float('inf')
+
+    # Base case 1: the target weight is < 0, no solution exists (default return)
+
+    # Base case 2: the target weight is zero, return 0 because no steps were taken:
+    if target_weight == 0: return 0
+    elif target_weight in memo:
+        return memo[target_weight]
+
+    # Recursive case: target weight not yet reached so recursively call this function
+    # for each weight in the weight list by subtracting the current weights
+    # magnitude from the target weight and exploring each path. Save the recursive
+    # results for each path then update least_steps to be the min of the current steps
+    # and recursive results.
+    elif target_weight > 0:
+        for w in egg_weights:
+            sub_problem_result = dp_make_weight(egg_weights, target_weight - w)
+            least_steps = min(least_steps, sub_problem_result)
+
+    memo[target_weight] = least_steps + 1
+    return least_steps + 1
 
 # EXAMPLE TESTING CODE, feel free to add more if you'd like
 if __name__ == '__main__':
