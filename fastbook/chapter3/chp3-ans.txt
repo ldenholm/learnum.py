@@ -1,0 +1,97 @@
+Does ethics provide a list of "right answers"?
+
+Ethics does not provide clear answers. Instead it presents competing opinions
+on what is considered "right" and "wrong". It draws from distinct schools of
+thought which individually offer interpreations of morality.
+
+How can working with people of different backgrounds help when considering ethical questions?
+
+People are born with different values and experiences. By creating culturally diverse teams we 
+draw from a pool of greater perspective. Diverse teams are necessary
+to build products and produce outcomes which affect the greater community for the better.
+
+What was the role of IBM in Nazi Germany? Why did the company participate as it did? 
+Why did the workers participate?
+
+IBM sold punchcard systems to Nazi Germany which were directly used for processing concentration camp
+members. IBM participated because of the financial benefits international trade provided. The workers
+likely participated because to them they were removed from the wider context of what their work was
+contributing toward. Oftentimes those working in major organizations are so compartmentalized in their
+teams they are unaware of their enterprise objectives.
+
+What was the role of the first person jailed in the Volkswagen diesel scandal?
+James Liang was an engineer at VW.
+
+What was the problem with a database of suspected gang members maintained by California law enforcement officials?
+This infamous database contained entries of people who were less than 1 year old of which were marked as "admitting
+to be gang members".
+
+Why did YouTube's recommendation algorithm recommend videos of partially clothed children to pedophiles, even though no employee at Google had programmed this feature?
+Youtube's recommendation system is designed to identify patterns in users watched videos and characteristics of such
+videos and users. On a good day this may mean a trainspotter is recommended a playlist of trains, however on a bad day
+this could mean something far more horrible. Ultimately the recommendation system is optimizing engagement to increase
+watch time and boost advertising revenue. When profit is incentivized above all other metrics we see wildly damaging and
+terrible unforseen effects.
+
+What are the problems with the centrality of metrics?
+When algorithms optimize for narrow financial metrics oftentimes awful edge cases appear. Bad actors participating
+in such a system will exploit such edge cases to their advantage.
+
+Why did Meetup.com not include gender in its recommendation system for tech meetups?
+If they chose to include gender in its recommendation system is would create a feedback loop encouraging
+mostly men to attend the events and then recommending succeeding events to those same men who already attended.
+
+What are the six types of bias in machine learning, according to Suresh and Guttag?
+Historical bias, Representation bias, Measurement bias, Evaluation bias, Aggregation bias, and Deployment bias.
+
+Give two examples of historical race bias in the US.
+- An all-white jury was 16 percentage points more likely to convict a Black defendant than a white one, but when 
+a jury had one Black member it convicted both at the same rate.
+- Responding to apartment rental ads on Craigslist with a Black name elicited fewer responses than with a white name.
+
+Where are most images in ImageNet from?
+Primarily the images are from the U.S. and other Western countries including Canada, U.K., France.
+
+In the paper ["Does Machine Learning Automate Moral Hazard and Error"](https://scholar.harvard.edu/files/sendhil/files/aer.p20171084.pdf) 
+why is sinusitis found to be predictive of a stroke?
+
+Because it is a condition found in those who have access to visit a doctor. The set of people who have unfiltered easy
+access to healthcare are those who have been reported with having sinusitis prior to a stroke. This is an example
+of measurement bias.
+
+What is representation bias?
+
+Representation bias is the phenomenon of misrepresenting reality in a dataset by limiting the spectrum of represented constituents.
+For example if we were to take a healthcare dataset which included mostly white upper class Australian's health records and used
+it as a basis for generalizing to the wider population then this would be an instance of representation bias.
+
+How are machines and people different, in terms of their use for making decisions?
+
+Machines are only as good as we program them. Machines can only make decisions informed by techniques and ethics we encode for them.
+
+People make decisions with a higher level of nuance as ambiguous as that sounds, it allows us to consider a range of contributing factors
+and emotions rather than raw data.
+
+Is disinformation the same as "fake news"?
+
+Part of what makes disinformation so pervasive and effective is the inclusions of altered truths amongst the garbage. It is commonly 
+accepted fake news and disinformation are the same thing however disinformation goes beyond simply falsifying information and leverages
+some truths to lure people in.
+
+Why is disinformation through auto-generated text a particularly significant issue?
+
+Deep learning provides an exceptional capability for auto-generating text and this is what makes disinformation particularly threatning
+in the modern era.
+
+What are the five ethical lenses described by the Markkula Center?
+
+The rights approach:: Which option best respects the rights of all who have a stake?
+The justice approach:: Which option treats people equally or proportionately?
+The utilitarian approach:: Which option will produce the most good and do the least harm?
+The common good approach:: Which option best serves the community as a whole, not just some members?
+The virtue approach:: Which option leads me to act as the sort of person I want to be?
+
+Where is policy an appropriate tool for addressing data ethics issues?
+
+Policy can be used to reshape market incentives for big tech and big business as a whole. Policy should be used to regulate powerful players in
+machine learning by establishing austere privacy laws and consumer protection laws. 
