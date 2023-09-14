@@ -1,0 +1,10 @@
+Two chess players, A and B, are going to play 7 games. Each game has three possible outcomes: a win for A (which is a loss for B), a draw (tie), and a loss for A (which is a win for B). A win is worth  point, a draw is worth  points, and a loss is worth  points.
+
+For A to end up with {WWWDDLL}
+
+We don't care in which order these outcomes occur we just want the total number of combinations.
+
+So 7! permutations exist, and we divide by 1/(3!2!2!) to remove the overcounted combinations.
+
+
+
