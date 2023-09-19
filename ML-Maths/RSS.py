@@ -10,3 +10,5 @@ model.fit(X, y)
 y_prediction = model.predict(X)
 
 rss = sum((y - y_prediction)**2)
+
+# TODO complete this.
