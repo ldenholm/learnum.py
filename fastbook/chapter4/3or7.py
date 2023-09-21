@@ -28,5 +28,17 @@ if __name__ == "__main__":
     # Construct a colour coded gradient matrix representing the top section of the image with Pandas Data Frame
     # to get an idea of how the image is created from pixel values:
     im3_tensor = tensor(im3)
-    df = pd.DataFrame(im3_tensor[4:15,4:22])
-    df.style.set_properties(**{'font-size':'6pt'}).background_gradient('Greys')
+    #df = pd.DataFrame(im3_tensor[4:15,4:22])
+    #df.style.set_properties(**{'font-size':'6pt'}).background_gradient('Greys')
+
+    # One method to begin with is calculating the average pixel value for 
+    # a 3 image and then for a 7. This will give us an idea of the 'ideal' pixel
+    # average for a 3 & 7.
+
+    seven_tensors = [tensor(Image.open(o)) for o in sevens]
+    three_tensors = [tensor(Image.open(o)) for o in threes]
+    len(three_tensors), len(seven_tensors)
+
+    stacked_sevens = torch.stack(seven_tensors).float()/255
+    stacked_threes = torch.stack(three_tensors).float()/255
+    print(stacked_threes.shape)
