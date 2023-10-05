@@ -78,10 +78,12 @@ if __name__ == "__main__":
     # represents a typical 3 image and therefore an image with a low distance from mean3
     # may be classified as a 3.
 
-    # PyToch includes both these norms as loss functions, and Fastai exposes them in 
+    # PyTorch includes both these norms as loss functions, and Fastai exposes them in 
     # the namespace F. Note the l1 norm loss function has a 1/n coefficient to compute
     # the mean otherwise it would not be the mean absolute value (MAE). Same goes for
     # MSE which is just the Euclidean norm with a 1/n multiplier in front.
 
     (x,y) = F.l1_loss(some_3.float(), mean7), F.mse_loss(some_3, mean7)
     print('L1 norm aka mean absolute value', x, 'Mean Squared Error', y)
+
+    
