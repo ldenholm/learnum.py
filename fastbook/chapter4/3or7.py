@@ -42,3 +42,8 @@ if __name__ == "__main__":
     stacked_sevens = torch.stack(seven_tensors).float()/255
     stacked_threes = torch.stack(three_tensors).float()/255
     print(stacked_threes.shape)
+    print('stacked three tensor rank: ', stacked_threes.ndim)
+
+    # Calculate the mean of the 0th dimension of the rank3 tensors:
+    mean3 = stacked_threes.mean(0)
+    show_image(mean3)
