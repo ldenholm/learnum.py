@@ -47,3 +47,41 @@ if __name__ == "__main__":
     # Calculate the mean of the 0th dimension of the rank3 tensors:
     mean3 = stacked_threes.mean(0)
     show_image(mean3)
+
+    # Same for 7's:
+    mean7 = stacked_sevens.mean(0)
+    show_image(mean3)
+
+    # mean3 represents an ideal 3, that is to say it is the mean numerical value of shading
+    # that occurs for all 3's in our dataset.
+
+    # We'll now use L1 and L2 norms to calculate distance from some '3' we are iterating over 
+    # let's call this i and the ideal mean3.
+
+    # Let's grab our i:
+    some_3 = stacked_threes[1]
+
+    l1norm_3 = (some_3 - mean3).abs().mean()
+    l2norm_3 = ((some_3 - mean3)**2).mean().sqrt()
+    print('l1 norm = ', l1norm_3, 'l2 norm = ', l2norm_3)
+
+    # Computing L1 & L2 norms for 7s:
+    l1norm_7 = (some_3 - mean7).abs().mean()
+    l2norm_7 = ((some_3 - mean7)**2).mean().sqrt()
+    print('l1 norm = ', l1norm_7, 'l2 norm = ', l2norm_7)
+
+    #l1 norm =  tensor(0.1114) l2 norm =  tensor(0.2021)
+    #l1 norm =  tensor(0.1586) l2 norm =  tensor(0.3021)
+
+    # We can see from the output that the distance between some 3 and the mean3 is always
+    # less than some 3 and mean7, which we will reason implies mean3 approximately
+    # represents a typical 3 image and therefore an image with a low distance from mean3
+    # may be classified as a 3.
+
+    # PyToch includes both these norms as loss functions, and Fastai exposes them in 
+    # the namespace F. Note the l1 norm loss function has a 1/n coefficient to compute
+    # the mean otherwise it would not be the mean absolute value (MAE). Same goes for
+    # MSE which is just the Euclidean norm with a 1/n multiplier in front.
+
+    (x,y) = F.l1_loss(some_3.float(), mean7), F.mse_loss(some_3, mean7)
+    print('L1 norm aka mean absolute value', x, 'Mean Squared Error', y)
