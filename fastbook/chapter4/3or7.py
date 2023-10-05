@@ -86,4 +86,41 @@ if __name__ == "__main__":
     (x,y) = F.l1_loss(some_3.float(), mean7), F.mse_loss(some_3, mean7)
     print('L1 norm aka mean absolute value', x, 'Mean Squared Error', y)
 
+    # Tricks with tensors and array (since they are optimized in C for the GPU):
+
+    data = [[2, 4, 6], [8, 10, 12]]
+    arr = array(data)
+    tns = tensor(data)
+
+    print(arr, tns)
+
+    # Second column of tensor:
+    print(tns[1])
+
+    # Use slicing syntax to select rows/cols [start:end]
+    tns[1,1:3]
+
+    # Add 1 to each element:
+    print(tns+1)
+
+    # Scale by half:
+    print(tns*0.5)
+
+    # Create tensors using the validation samples which will be used to measure
+    # the accuracy of this classifier.
+
+    valid3_tensor = torch.stack([tensor(Image.open(o)) for o in (path/'valid'/'3').ls()])
+    valid3_tensor = valid3_tensor.float()/255
+
+    valid7_tensor = torch.stack([tensor(Image.open(o)) for o in (path/'valid'/'7').ls()])
+    valid7_tensor = valid7_tensor.float()/255
+
+    print(valid3_tensor.shape,valid7_tensor.shape)
+
+
+    # Define a function which takes two images a,b -> returning a distance between them:
+
+    def distance(a, b: Tensor):
+        return (a-b).abs().mean((-1, -2))
     
+    print(distance(some_3, mean3))
