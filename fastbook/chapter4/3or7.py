@@ -121,6 +121,16 @@ if __name__ == "__main__":
     # Define a function which takes two images a,b -> returning a distance between them:
 
     def distance(a, b: Tensor) -> Tensor:
+        """
+        Subtract tensor b from a (broadcast if a and b of different rank).
+        Create new tensor by taking elementwise absolute value of existing
+        values of (a-b). Finally take the mean of final 2 axes, that is the
+        x and y axes for the rank 3 resultant tensor which corresponds to the
+        horizontal and vertical axes of the individual images (the first axis
+        represents the index of images). In programmer-speak: take the average
+        of the intensity of each pixel for each image and return a rank 1 tensor
+        (vector) of the averages.
+        """
         return (a-b).abs().mean((-1, -2))
     
     print(distance(some_3, mean3))
