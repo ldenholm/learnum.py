@@ -120,7 +120,20 @@ if __name__ == "__main__":
 
     # Define a function which takes two images a,b -> returning a distance between them:
 
-    def distance(a, b: Tensor):
+    def distance(a, b: Tensor) -> Tensor:
         return (a-b).abs().mean((-1, -2))
     
     print(distance(some_3, mean3))
+
+    # We can pass the entire validation set tensor as the first argument to our
+    # distance function and receive a rank 1 tensor (vector) containing the l1 norm
+    # for all images in the validaiton set with the mean3 tensor.
+
+    valid_set_l1_vector = distance(valid3_tensor, mean3)
+    print(valid_set_l1_vector, valid_set_l1_vector.shape)
+
+    # This is possible because PyTorch uses broadcasting when attempting operations
+    # on two tensors of different rank. Above we subtract a rank 2 tensor (mean3 is 
+    # a matrix) from a rank 3 tensor (the validation set of 3's). PyTorch fills
+    # the rank 2 tensor with elements to match the signature of the rank 3 tensor
+    # and we are able to perform the subtraction.
