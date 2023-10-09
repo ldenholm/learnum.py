@@ -147,3 +147,24 @@ if __name__ == "__main__":
     # a matrix) from a rank 3 tensor (the validation set of 3's). PyTorch fills
     # the rank 2 tensor with elements to match the signature of the rank 3 tensor
     # and we are able to perform the subtraction.
+
+    # Let's define a boolean function which classifies an image as a 3 if the magnitude
+    # of the distance between ideal 3 is less than that of the ideal 7.
+
+    def is_3(x: Tensor) -> bool: return distance(x, mean3) < distance(x, mean7)
+
+    # Individual test:
+    print(is_3(some_3), is_3(some_3).float())
+
+    # Test entire validation set (uses broadcasting):
+    print(is_3(valid3_tensor))
+
+    # Next we will make use of broadcasting yet again and take the mean of the
+    # resultant is_3 tensor passing the valid_3 ens as its argument, casting this
+    # to float so that the mean really does represent the accuracy [1, 100].
+    # Also we can take the inverse (1 - x) to capture the accuracy of the 7s.
+
+    accuracy_3 = is_3(valid3_tensor).float().mean()
+    accuracy_7 = (1 - is_3(valid7_tensor).float()).mean()
+
+    print('accuracy 3: ', accuracy_3, 'accuracy 7: ', accuracy_7, 'accuracy of both: ', (accuracy_3 + accuracy_7)/2)
