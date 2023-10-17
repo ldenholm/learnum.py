@@ -37,3 +37,11 @@ print(np.sqrt(A)), print(A**0.5)
 
 # Take square of entries of A
 print(np.square(A)), print(A**2)
+
+# Using np random to generate 50 independent random vars
+Y = np.random.normal(size=50)
+print(Y)
+
+y = Y + np.random.normal(loc=50, scale=1, size=50)
+
+print(np.corrcoef(Y, y))
