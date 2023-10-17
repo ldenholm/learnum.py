@@ -18,3 +18,22 @@ A = np.array([[1, 2, 3], [4, 5, 6]])
 # 2x3 shape of A
 print(A.shape, A.dtype)
 print(A.sum())
+
+# We can reshape stuff:
+reshape_A = np.reshape(A, (3, 2))
+print('reshaped A: \n', reshape_A)
+
+# Access A[i,j], A[0,0] = top left element
+print(reshape_A[0, 0])
+
+# Row access w/ zero based indexing
+print(reshape_A[1])
+
+# Transposes
+print('A and its transpose\n', A, '\n', A.T)
+
+# Take sqrt() of entries of A
+print(np.sqrt(A)), print(A**0.5)
+
+# Take square of entries of A
+print(np.square(A)), print(A**2)
