@@ -67,3 +67,14 @@ print('variance is std squared so:\nstd= ', x1.std(), '\nvar= ', x1.var(), '\nst
 
 v = sum(((x - x1.mean())**2 for x in x1)) / len(x1) # <-- this is why python is so sick
 print('continued:\nvariance= ', v)
+
+print('sqroot of var is dev: ', x1.var()**0.5, x1.std())
+
+# Let's shift gears and use these functions on a rank 2 tensor... cough.. a matrix.
+X1 = rng.standard_normal((10, 3))
+print(X1)
+# So here when we take the mean of rows for example (axes=0)
+# from what I can tell it basically sums each row value in the jth column then
+# usual divide by number of elements in total.
+print('0th axis aka rows\n',X1.mean(axis=0))
+print('1st axis aka cols\n',X1.mean(axis=1))
