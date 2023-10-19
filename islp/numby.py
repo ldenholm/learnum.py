@@ -64,3 +64,6 @@ print(rng2.normal(scale=5, size=2))
 x1 = rng.normal(2, 2, 20)
 print('x1:\n', x1, '\nmean: ', x1.mean())
 print('variance is std squared so:\nstd= ', x1.std(), '\nvar= ', x1.var(), '\nstdsq= ', (x1.std()**2))
+
+v = sum(((x - x1.mean())**2 for x in x1)) / len(x1) # <-- this is why python is so sick
+print('continued:\nvariance= ', v)
