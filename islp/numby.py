@@ -44,4 +44,23 @@ print(Y)
 
 y = Y + np.random.normal(loc=50, scale=1, size=50)
 
-print(np.corrcoef(Y, y))
+print('y:\n', y)
+
+print('correlation coefficient matrix\n', np.corrcoef(Y, y))
+
+
+# Setting up a random seed so we keep a constant result:
+# w/o seed
+print(np.random.normal(scale=5, size=2))
+print(np.random.normal(scale=5, size=2))
+
+# w/ seed
+rng = np.random.default_rng(270)
+print(rng.normal(scale=5, size=2))
+rng2 = np.random.default_rng(270)
+print(rng2.normal(scale=5, size=2))
+
+# Various other important funcs
+x1 = rng.normal(2, 2, 20)
+print('x1:\n', x1, '\nmean: ', x1.mean())
+print('variance is std squared so:\nstd= ', x1.std(), '\nvar= ', x1.var(), '\nstdsq= ', (x1.std()**2))
