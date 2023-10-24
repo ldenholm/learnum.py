@@ -7,7 +7,6 @@ rng = np.random.default_rng(170)
 x = rng.standard_normal(100)
 y = rng.standard_normal(100)
 
-ax.plot(x, y)
+ax.plot(x, y, 'o')
 fig.show()
-
-# todo: fix plot displaying
+# run as python -i /path/to/script
