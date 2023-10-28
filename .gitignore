@@ -3,4 +3,5 @@ fastbook/chapter2/bears/
 fastbook/chapter2/images/
 fastbook/chapter2/app/export.pkl
 fastbook/chapter2/app/uploads
+roc/env
 **/__pycache__/
