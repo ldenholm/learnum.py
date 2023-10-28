@@ -25,7 +25,8 @@ print(x)
 
 fig.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d/%m'))
 fig.gca().xaxis.set_major_locator(mdates.MonthLocator())
-#ax.locator_params(axis='x', nbins=12)
+ax.set_xlabel('Month (2022)')
+ax.set_ylabel('Particulate Matter diameter of 10 micrometers')
 ax.plot(x, y, 'o')
 fig.savefig('newplt2')
 
