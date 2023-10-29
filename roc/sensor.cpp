@@ -35,6 +35,7 @@
 
 #include <Arduino.h>
 #include <U8g2lib.h>
+#include <DHT.h>
 
 #ifdef U8X8_HAVE_HW_SPI
 #include <SPI.h>
@@ -42,6 +43,10 @@
 #ifdef U8X8_HAVE_HW_I2C
 #include <Wire.h>
 #endif
+
+#define DHTPIN 2     // Digital pin connected to the DHT sensor
+#define DHTTYPE DHT11   // DHT 11
+
 
 /*
   U8g2lib Example Overview:
@@ -368,16 +373,60 @@ U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, /* clock=*/ SCL, /* data=*/ SD
 
 // End of constructor list
 
+// ---------------------------------------------------------------------------------------------------------------------
+
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup(void) {
   u8g2.begin();
+  Serial.begin(9600);
+  Serial.println(F("DHTxx test!"));
+
+  dht.begin();
 }
 
 void loop(void) {
   u8g2.clearBuffer();         // clear the internal memory
   u8g2.setFont(u8g2_font_ncenB08_tr); // choose a suitable font
   //u8g2.drawStr(0,10,"Hello World!");  // write something to the internal memory
-  u8g2.drawStr(0,10,"iss itt!!");  // write something to the internal memory
+  u8g2.drawStr(0,10,"it's off!!");  // write something to the internal memory
   u8g2.sendBuffer();          // transfer internal memory to the display
-  delay(50000);  
+  delay(1000);  
+
+  // temp sens
+  // Wait a few seconds between measurements.
+  delay(2000);
+    // Reading temperature or humidity takes about 250 milliseconds!
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius (the default)
+  float t = dht.readTemperature();
+  // Read temperature as Fahrenheit (isFahrenheit = true)
+  float f = dht.readTemperature(true);
+
+  // Check if any reads failed and exit early (to try again).
+  /*if (isnan(h) || isnan(t) || isnan(f)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return; 
+  }
+  */
+
+  // Compute heat index in Fahrenheit (the default)
+  float hif = dht.computeHeatIndex(f, h);
+  // Compute heat index in Celsius (isFahreheit = false)
+  float hic = dht.computeHeatIndex(t, h, false);
+
+  Serial.print(F(" Humidity: "));
+  Serial.print(h);
+  Serial.print(F("%  Temperature: "));
+  Serial.print(t);
+  Serial.print(F("°C "));
+  Serial.print(f);
+  Serial.print(F("°F  Heat index: "));
+  Serial.print(hic);
+  Serial.print(F("°C "));
+  Serial.print(hif);
+  Serial.println(F("°F"));
+
+  // Todo: fix the dht11 sensor, not receiving correctly.
 }
