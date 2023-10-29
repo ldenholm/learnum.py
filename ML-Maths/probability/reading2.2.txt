@@ -1,0 +1,30 @@
+A standard deck of 52 playing cards is shuffled well. 
+Two cards are drawn randomly, one at a time without replacement.
+Let A be the event that the first card is a heart, and B be the event that the second card is red. Find P(A|B) and P(B|A).
+
+Probability the first card is a heart GIVEN that the second card is a red?
+Well hearts are all red. How many red cards exist in a deck?
+26/52. How many hearts exist in a deck? 13.
+
+We are given the formula:
+P(A|B) = P(A ^ B) / P(B)
+
+Basically does the order matter?
+
+So let's solve for A: We need to find P(A ^ B).
+
+P(A ^ B) = These are dependent events.
+P(A ^ B) = total number of favourable outcomes / total outcomes
+
+(13 / 52) * (25 / 51) = 25 / 204. You have to multiply the probabilities
+with eachother because the events are dependent.
+
+Next find the probability of event B: P(B) = 
+
+
+A bag contains 3 red marbles and 4 blue marbles.
+Two marbles are drawn at random without replacement.
+If the first marble drawn is red, what is the probability the second marble is blue?
+
+7 marbles in total. A = 1st marble is red. B = second marble is blue.
+3/7 * 4/6 = 3 / 7 * 2 / 3 = 6 / 21 = 2 / 7
