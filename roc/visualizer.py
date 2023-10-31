@@ -28,7 +28,7 @@ fig.gca().xaxis.set_major_locator(mdates.MonthLocator())
 ax.set_xlabel('Month (2022)')
 ax.set_ylabel('Particulate Matter diameter of 10 micrometers')
 ax.plot(x, y, 'o')
-fig.savefig('newplt2')
+fig.savefig(f'{GRAPH_PATH}newplt2-{dt.datetime.now()}')
 
 #print(dates)
 
