@@ -29,7 +29,3 @@ ax.set_xlabel('Month (2022)')
 ax.set_ylabel('Particulate Matter diameter of 10 micrometers')
 ax.plot(x, y, 'o')
 fig.savefig(f'{GRAPH_PATH}newplt2-{dt.datetime.now()}')
-
-#print(dates)
-
-# Todo: take average PM10 for each day then plot average PM10 p/day vs day.
