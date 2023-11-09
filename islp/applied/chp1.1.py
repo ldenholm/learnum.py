@@ -4,7 +4,7 @@ import numpy as np
 Auto = pd.read_csv('../data/Auto.csv')
 # Drop any rows containing missing values:
 Auto.dropna()
-
+print('auto initial shape: ', Auto.shape)
 # Sanitize dataset in O(n) by removing any ? values, and cast to num
 Auto = Auto.replace("?", 0)
 Auto['horsepower'] = pd.to_numeric(Auto['horsepower'])
@@ -29,6 +29,19 @@ for column in Auto:
         break
     i = Auto[column]
     min, max, mean, std = np.min(i), np.max(i), np.mean(i), np.std(i)
-    #min, max, mean = np.min(Auto[column]), np.max(Auto[column]), 
+    range = (max - min)
+    print(f'{column} min = {min} max = {max}, range = {range}, mean = {mean}, std = {std}')
+
+# (d) Next remove the 10th - 85th observations
+auto_subset = Auto.drop(Auto.index[9:84])
+print(auto_subset.shape)
+print('\n-------------------------Subset of original dataset, samples 10-85 removed-------------------------\n')
+# (e) Find min, max, mean, std for this new subset
+for column in auto_subset:
+    if column == "name":
+        print('breaking')
+        break
+    i = auto_subset[column]
+    min, max, mean, std = np.min(i), np.max(i), np.mean(i), np.std(i)
     range = (max - min)
     print(f'{column} min = {min} max = {max}, range = {range}, mean = {mean}, std = {std}')
