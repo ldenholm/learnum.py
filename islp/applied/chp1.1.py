@@ -5,21 +5,22 @@ Auto = pd.read_csv('../data/Auto.csv')
 # Drop any rows containing missing values:
 Auto.dropna()
 
-# Sanitize dataset in O(n) by removing any ? values
-for col in Auto:
-    if col == "name":
-        print('breaking')
-        break
-    Auto[col] = Auto[col] != "?"
-    #Auto[col] = pd.to_numeric(Auto[col])
+# Sanitize dataset in O(n) by removing any ? values, and cast to num
+Auto = Auto.replace("?", 0)
+Auto['horsepower'] = pd.to_numeric(Auto['horsepower'])
 
 print(Auto)
 
-# Within the dataset which predictors are qualitative/quantitative?
+# Which predictors are qualitative/quantitative?
 # Qualitative: {Name}
 # Quantitative: {mpg,cylinders,displacement,horsepower,weight,acceleration,year,origin}
 
-# It's breaking because we have a '?' in the horsepower col
+# It's breaking because we have a '?' in the horsepower col, sanitize above
+
+print('test min and max of mpg and cyl')
+print(np.max(Auto['horsepower']))
+# print('hp max: ', np.max(int((Auto['horsepower']))))
+# print('hp min: ', np.min(int((Auto['horsepower']))))
 
 for column in Auto:
     # it's  gonna fail on the qualitative values
@@ -29,5 +30,6 @@ for column in Auto:
     # show range of each quantitative var:
     #print(column, 'range: ', 
     #      (float(Auto[column].max()) - float(Auto[column].min())))
-    print('entire auto max: ', Auto.max()) # <-- this is returning a boolean, probably treating the values as strings
-    print(column, 'mean: ', Auto[column].mean())
+    min, max = np.min(Auto[column]), np.max(Auto[column])
+    range = (max - min)
+    print(f'{column} min = {min} max = {max}, range = {range}')
