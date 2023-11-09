@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 Auto = pd.read_csv('../data/Auto.csv')
 # Drop any rows containing missing values:
@@ -36,7 +37,6 @@ for column in Auto:
 auto_subset = Auto.drop(Auto.index[9:84])
 print(auto_subset.shape)
 print('\n-------------------------Subset of original dataset, samples 10-85 removed-------------------------\n')
-# (e) Find min, max, mean, std for this new subset
 for column in auto_subset:
     if column == "name":
         print('breaking')
@@ -45,3 +45,15 @@ for column in auto_subset:
     min, max, mean, std = np.min(i), np.max(i), np.mean(i), np.std(i)
     range = (max - min)
     print(f'{column} min = {min} max = {max}, range = {range}, mean = {mean}, std = {std}')
+
+# (e) Explore the full data set graphically
+
+#Auto.plot.scatter(x='weight', y='year') # sort of useless
+Auto.plot.scatter(x='horsepower', y='mpg')
+# there is a weak negative linear correlation between horsepower and miles per gallon
+
+Auto.boxplot(column='acceleration', by='cylinders')
+# Above describes how the acceleration of the vehicles with varying cylinder sizes
+# is distributed 
+
+plt.show()
