@@ -27,9 +27,8 @@ for column in Auto:
     if column == "name":
         print('breaking')
         break
-    # show range of each quantitative var:
-    #print(column, 'range: ', 
-    #      (float(Auto[column].max()) - float(Auto[column].min())))
-    min, max = np.min(Auto[column]), np.max(Auto[column])
+    i = Auto[column]
+    min, max, mean, std = np.min(i), np.max(i), np.mean(i), np.std(i)
+    #min, max, mean = np.min(Auto[column]), np.max(Auto[column]), 
     range = (max - min)
-    print(f'{column} min = {min} max = {max}, range = {range}')
+    print(f'{column} min = {min} max = {max}, range = {range}, mean = {mean}, std = {std}')
