@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sb
 
 Auto = pd.read_csv('../data/Auto.csv')
 # Drop any rows containing missing values:
@@ -72,4 +73,9 @@ axis[1].scatter(Auto['weight'], Auto['mpg'])
 axis[1].set_title("mpg vs weight")
 # There is a strong negative linear correlation between weight and mpg,
 # we may predict mpg from the weight of the vehicle.
+plt.show()
+
+
+corr = Auto.drop(columns=['name']).corr()
+sb.heatmap(corr, annot=True)
 plt.show()
