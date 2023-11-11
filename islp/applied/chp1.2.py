@@ -48,6 +48,36 @@ print('Number of suburbs in data set which bound the Charles river: ',
 print('median pupil-teacher ratio: ',
       boston['ptratio'].median())
 
-# todo fix this, need to get the min samples row num:
-#print('finding lowest median value of owner occupied homes: ',
-      #boston.index[boston['medv'].min()])
+# todo fix this, need to get the min samples row num, we can use idxmin().
+print('finding lowest median value of owner occupied homes: ',
+      boston['medv'].idxmin())
+# all predictors for this suburb.
+print(boston.iloc[398,:])
+
+for col in boston:
+    print(f'{col} range = ', (boston[col].max() - boston[col].min()))
+
+# Judging from the results above, tax in the aforementioned suburb exceeds
+# the range of tax for the dataset hence its an outlier. Similar case for age
+# and ptratio.
+
+# (i) In this data set, how many of the suburbs average more than seven rooms 
+# per dwelling? More than eight rooms per dwelling?
+print('Number of suburbs averaging > 7 rooms per dwelling: ',
+      boston[boston['rm'] > 7].shape[0])
+
+print('Number of suburbs averaging > 8 rooms per dwelling: ',
+      boston[boston['rm'] > 8].shape[0])
+
+# correlation is nqr for this, we want something to compare
+# rm > 8 with vanilla dataset. Or at least view the samples
+# in this subset and see if there is any correlation.
+#sn.heatmap(boston[(boston['rm'] > 8)].corr(), annot=True)
+# for suburb in boston[boston['rm'] > 8].values:
+#     #print(boston.iloc[suburb,:])
+#     print(suburb)
+
+# todo comment on the suburbs having > 8 rooms per dwelling.
+
+plt.show()
+# These suburbs seem to have higher
