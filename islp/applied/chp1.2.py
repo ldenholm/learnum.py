@@ -69,15 +69,12 @@ print('Number of suburbs averaging > 7 rooms per dwelling: ',
 print('Number of suburbs averaging > 8 rooms per dwelling: ',
       boston[boston['rm'] > 8].shape[0])
 
-# correlation is nqr for this, we want something to compare
+# corr matrix is nqr for this, we want something to compare
 # rm > 8 with vanilla dataset. Or at least view the samples
-# in this subset and see if there is any correlation.
-#sn.heatmap(boston[(boston['rm'] > 8)].corr(), annot=True)
-# for suburb in boston[boston['rm'] > 8].values:
-#     #print(boston.iloc[suburb,:])
-#     print(suburb)
+# in this subset and see if there are any notable observations.
 
 # todo comment on the suburbs having > 8 rooms per dwelling.
+print(boston[boston['rm'] > 8].values)
 
 plt.show()
 # These suburbs seem to have higher
