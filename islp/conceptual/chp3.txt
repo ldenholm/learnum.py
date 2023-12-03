@@ -1,0 +1,25 @@
+Describe the null hypotheses to which the p-values given in Table 3.4
+correspond. Explain what conclusions you can draw based on these
+p-values. Your explanation should be phrased in terms of sales, TV,
+radio, and newspaper, rather than in terms of the coefcients of the
+linear model.
+
+Table 3.4 includes p-values for 
+
+Q: Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model.
+
+The null hypothesis corresponding to the p-value associated with the TV row states:
+There is no correlation between an increase in TV advertisement expenditure and increased quantity of sold units (sales).  We can infer from the p-value that there it is highly unlikely the relationship between the explanatory variable TV expenditure and dependent variable sales is due to chance.
+
+The null hypothesis corresponding to the p-value associated with the y-intercept states:
+The Sales mean is zero when the explanatory variables TV, Radio, and Newspaper are zero. Since the p-value is so small we deduce that this null hypothesis may be rejected, thus the Sales mean is not zero when the explanatory variables are zero.
+
+The null hypothesis corresponding to the p-value associated with the Radio row states:
+There is no correlation between an increase in radio advertisement expenditure and increased quantity of sold units (sales).  We can infer from the p-value that there it is highly unlikely the relationship between the explanatory variable Radio expenditure and dependent variable sales is due to chance.
+
+The null hypothesis corresponding to the p-value associated with the Newspaper row states: There is no correlation between an increase in newspaper advertisement expenditure and increased quantity of sold units (sales). We can infer from the p-value that the increase in sales due to increased newspaper advertising is likely due to chance.
+
+Q. Carefully explain the differences between the KNN classifier and KNN regression methods.
+
+KNN Classification assigns a class to a variable judged on the most common class found among the k nearest values. L2 norm distance function is used to equate distance and then the class with the highest frequency among k neighbours is assigned. In the case k = 1 the class of the nearest neighbour is assigned.
+KNN Regression assigns a value to a given variable by taking the average of the k nearest points. In the case k = 1 then the value of k is assigned.
