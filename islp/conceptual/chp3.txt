@@ -23,3 +23,4 @@ Q. Carefully explain the differences between the KNN classifier and KNN regressi
 
 KNN Classification assigns a class to a variable judged on the most common class found among the k nearest values. L2 norm distance function is used to equate distance and then the class with the highest frequency among k neighbours is assigned. In the case k = 1 the class of the nearest neighbour is assigned.
 KNN Regression assigns a value to a given variable by taking the average of the k nearest points. In the case k = 1 then the value of k is assigned.
+
