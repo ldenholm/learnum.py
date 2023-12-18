@@ -8,3 +8,7 @@ def rgb2grey(rgb):
 img = mpimg.imread('bird.png')
 plt.imshow(img)
 plt.show()
+# convert to rbg
+img_gray = rgb2grey(img)
+plt.imshow(img_gray, cmap=plt.get_cmap('gray'))
+plt.show()
