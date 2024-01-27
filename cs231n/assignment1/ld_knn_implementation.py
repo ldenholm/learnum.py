@@ -55,3 +55,7 @@ y_test = y_test[mask]
 X_train = np.reshape(X_train, (X_train.shape[0], -1))
 X_test = np.reshape(X_test, (X_test.shape[0], -1))
 print(X_train.shape, X_test.shape)
+
+# Now we use the cs231n implementation of KNN classifier included in their lib.
+classifier = KNearestNeighbor()
+classifier.train(X_train, y_train)
