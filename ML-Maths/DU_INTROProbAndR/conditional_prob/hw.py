@@ -30,3 +30,12 @@ ratio = num / float(len(fours))
 print('likelihood: ', ratio)
 
 # Warning incredibly inefficient simulation lol.
+
+# Assume 0 < P(A) < 1 and 0 < P(B) < 1
+# Suppose P(A) = 0.7, P(B) = 0.5, P(B|A) = 0.6, Find P(A u B).
+# Round ans to 2 decimal places.
+
+# P(A u B) = P(A) + P(B) - P(A n B)
+# P(A n B) = P(B|A)P(A) = 0.6*0.7 = 0.42
+# P(A u B) = 0.7 + 0.5 - 0.42
+#          = 0.78
