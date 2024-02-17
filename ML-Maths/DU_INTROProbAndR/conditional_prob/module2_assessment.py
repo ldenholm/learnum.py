@@ -102,3 +102,56 @@ The game of Yahtzee is played with five fair dice. The goal is to roll certain �
   P(small straight OR large straight) = P(s) + P(l) - P(s n l)
   P(small straight OR large straight) = 20/36 + 4/36 - 4/36 = 20/36
   20/36 =  0.556, yay well done!
+
+  What is the probability of rolling a small straight (exactly four dice in a row) on the first round?
+
+  total possible ways to roll 5 dice = 6^5 = 7776
+
+  there are 5 possible small straights that exist:
+  (1,2,3,4) or (2,3,4,5) or (3,4,5,6).
+
+  we don't want to count large straights so
+  (1,2,3,4)*5 possibilities exist since we dont count 5, 6-1=5
+  the same is true for (3,4,5,6), but for (2,3,4,5) there are only
+  possible values of the fifth dice since both 1 and 6 would transform
+  it to a large straight.
+
+  there are 5+5+4 = 14 different ways the five dice can produce a small
+  straight. of these 14 ways to roll small straights, only 2 of them have
+  distinct elements: (1,2,3,4,6), (1,3,4,5,6)
+  there are 5! ways to roll these sets of 5 results and two of them,
+  so 2 * 5! = 240 total ways.
+
+  for the remaining sets they are allowed repeating elements, a maximum of 2
+  repeats for each, so we have 3! ways to arrange the 3 distinct elements,
+  multiplied by 5 choose 2 ways to arrange the 2 repeated elements.
+
+  so we have 10 * 60 ways to roll one of the remaining 14 sets, 
+  so 60 * 12 = 720 plus the 240 ways from before = 960 total successful
+  ways to roll a small straight.
+
+  P(rolling a small straight) = 960/7776 = 0.123
+
+  In 2008,  3% of adults (age 25 or older) in Boulder, CO had a PhD,  45%
+  had at least a bachelor’s degree, and  75%
+  were employed full-time. Consider randomly selecting an adult from Boulder, CO for an interview. Let  𝐴
+  denote the event that the individual has a PhD, let  𝐵
+  be the event that the individual has a bachelor’s degree, and let  𝐶
+  be the event that the individual is employed full-time. Assume that, in order to have a PhD, you must have a bachelor’s degree.
+
+  a)  Is it possible for  P(A n B) = 0.03?
+
+  So A is a subset of B. P(B|A) = 1.
+
+  P(A n B) = P(A)P(B|A) = 1 * 0.03. So yes it is possible for P(A n B) = 0.03.
+
+  b) For the remaining questions, let  P(B u C) = 0.75. Compute the probability that the selected individual has a bachelor’s degree and full-time employ-ment. Round your answer to two decimal points. Enter your solution into variable p4.2.
+
+  So P(B u C) = P(B) + P(C) - P(B n C).
+
+  P(B n C) = P(B) + P(C) - P(B u C)
+  P(B n C) = 0.45 + 0.75 - 0.75 = 0.45
+
+  c) What is the probability that the selected individual has a bachelor’s degree given that they are employed full-time?
+
+  P(B|C) = P(B n C)/P(C) = 0.45 / 0.75 = 0.6 = P(B|C)
