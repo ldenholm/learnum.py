@@ -7,3 +7,4 @@ fastbook/chapter2/app/export.pkl
 fastbook/chapter2/app/uploads
 roc/env
 **/__pycache__/
+*.out
